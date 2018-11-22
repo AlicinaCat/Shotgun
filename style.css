@@ -21,6 +21,9 @@ p {
 #columns {
     position: absolute;
     bottom: 0;
+    width: 99%;
+    display: flex;
+    justify-content: space-between;
 }
 
 header h1 {
@@ -33,20 +36,16 @@ header h1 {
 .column {
     background-color: #fd3423;
     text-align: justify;
-    float: left;
     width: 30%;
     padding: 10px;
     margin-left: 1%;
     margin-right: 1%;
+    float: left;
 }
 
 .column h1 {
     color: #f5d4b8;
     font-family: 'Abril Fatface';
-}
-
-#right {
-    float: right;
 }
 
 #right h1 {
