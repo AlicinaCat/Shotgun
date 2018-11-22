@@ -9,6 +9,8 @@ body {
 
 .container {
     background-color: none;
+    margin-left: auto;
+    margin-right:  auto;
 }
 
 header h1 {
@@ -16,4 +18,22 @@ header h1 {
     font-family: 'Abril Fatface', cursive;
     color: #ebf0f4;
     font-size: 100px;
+}
+
+.column {
+    background-color: brown;
+    text-align: justify;
+    float: left;
+    width: 30%;
+    padding: 10px;
+}
+
+#right {
+    float: right;
+}
+
+#center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
 }
