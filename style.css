@@ -7,10 +7,20 @@ body {
     background-size: cover;
 }
 
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
 .container {
     background-color: none;
     margin-left: auto;
     margin-right:  auto;
+}
+
+#columns {
+    position: absolute;
+    bottom: 0;
 }
 
 header h1 {
@@ -21,11 +31,13 @@ header h1 {
 }
 
 .column {
-    background-color: brown;
+    background-color: #fd3423;
     text-align: justify;
     float: left;
     width: 30%;
     padding: 10px;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 #right {
