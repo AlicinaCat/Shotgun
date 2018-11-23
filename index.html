@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Oswald" rel="stylesheet">
-    <script src="script.js"></script>
     <title>Christmas</title>
 </head>
 
@@ -21,9 +20,9 @@
     <div class="container" id="middle">
         <div class="column" id="center">
             <ul>
-                <li><button>Wrap</button></li>
-                <li><button>Block</button></li>
-                <li><button>Throw</button></li>
+                <li><button id="wrap">Wrap</button></li>
+                <li><button id="block">Block</button></li>
+                <li><button id="throw" onclick="player.shoot(); console.log(player.shots); ">Throw</button></li>
                 <!--<li><button>Merry Christmas!</button></li>-->
             </ul>
         </div>
@@ -34,19 +33,19 @@
             <h1>
                 Player 1
             </h1>
-            <p>Shots: </p>
+            <p>Presents: </p>
         </div>
 
         <div class="column" id="right">
             <h1>
                 Player 2
             </h1>
-            <p>Shots: </p>
+            <p>Presents: </p>
         </div>
 
     </div>
 
-
+    <script src="script.js"></script>
 </body>
 
 </html>
