@@ -19,11 +19,12 @@ class Player {
     }
 
     block() {
-
+        
     }
 
     shotgun() {
-        return this.name + " won!";
+        console.log(this.name + " won!");
+        return true;
     }
 
     random() {
@@ -31,10 +32,13 @@ class Player {
         console.log("choice: " + choice);
         if (choice == 0) {
             this.reload();
+            return choice;
         } else if (choice == 1) {
             this.block();
+            return choice;
         } else if (choice == 2) {
             this.shoot();
+            return choice;
         }
     }
 
@@ -73,16 +77,13 @@ class Player {
                 break;
         }
     }
-
 }
 
 function check() {
     if (player.shots == 3) {
-        console.log(player.shotgun());
-        return true;
+        return player.shotgun();
     } else if (computer.shots == 3) {
-        console.log(computer.shotgun())
-        return true;
+        return computer.shotgun();
     } else {
         return false;
     }
@@ -91,19 +92,27 @@ function check() {
 function turn(choice) {
     var gameOver = check();
     console.log(gameOver);
+    let computerChoice;
 
     if (!gameOver) {
-
         console.log("choice: " + choice);
         if (choice == 0) {
-            player.reload();
+            computerChoice = computer.random();
+            if (computerChoice == 2 && computer.shots + 1 > 1)
+                computer.shotgun();
+            else
+                player.reload();
         } else if (choice == 1) {
             player.block();
+            computer.random();
         } else if (choice == 2) {
-            player.shoot();
+            computerChoice = computer.random();
+            console.log('computer chose: ' + computerChoice);
+            if (computerChoice == 0)
+                player.shotgun();
+            else
+                player.shoot();
         }
-
-        computer.random();
 
         console.log("Player " + player.name + " has " + player.shots + " shots");
         console.log("Player " + computer.name + " has " + computer.shots + " shots");
@@ -127,26 +136,7 @@ throwButton.addEventListener('click', function () {
     turn(2);
 });
 
-function increasePlayerCounter() {
-    let paragraph = document.getElementById('player-counter');
-    let present = document.createElement('img');
-    present.src = "pictures/present-icon.png";
-    paragraph.appendChild(present).width = "30";
-}
-
-function decreasePlayerCounter() {
-    let paragraph = document.getElementById('player-counter');
-    paragraph.removeChild(paragraph.childNodes[player.shots + 1]);
-}
-
-function increaseComputerCounter() {
-    let paragraph = document.getElementById('computer-counter');
-    let present = document.createElement('img');
-    present.src = "pictures/present-icon.png";
-    paragraph.appendChild(present).width = "30";
-}
-
-function decreaseComputerCounter() {
-    let paragraph = document.getElementById('computer-counter');
-    paragraph.removeChild(paragraph.childNodes[computer.shots + 1]);
-}
+var blockButton = document.getElementById('block');
+blockButton.addEventListener('click', function () {
+    turn(1);
+});
