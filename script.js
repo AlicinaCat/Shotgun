@@ -6,6 +6,7 @@ class Player {
 
     reload() {
         console.log(this.shots);
+        this.increaseCounter();
         return this.shots += 1;
     }
 
@@ -34,6 +35,27 @@ class Player {
             this.shoot();
         }
     }
+
+    increaseCounter() {
+        let name = this.name;
+        switch (name) {
+            case "Computer":
+                console.log("default character");
+                let computerCounter = document.getElementById('computer-counter');
+                let present = document.createElement('img');
+                present.src = "pictures/present-icon.png";
+                computerCounter.appendChild(present).width = "30";
+                break;
+            default:
+                console.log(this.name);
+                let playerCounter = document.getElementById('player-counter');
+                let icon = document.createElement('img');
+                icon.src = "pictures/present-icon.png";
+                playerCounter.appendChild(icon).width = "30";
+                break;
+        }
+    }
+
 }
 
 function check() {
@@ -57,12 +79,10 @@ function turn(choice) {
         console.log("choice: " + choice);
         if (choice == 0) {
             player.reload();
-            increasePlayerCounter();
         } else if (choice == 1) {
             player.block();
         } else if (choice == 2) {
             player.shoot();
-            decreasePlayerCounter();
         }
 
         computer.random();
