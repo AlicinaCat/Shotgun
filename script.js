@@ -12,8 +12,10 @@ class Player {
 
     shoot() {
         console.log(this.shots);
-        if (this.shots > 0)
+        if (this.shots > 0) {
+            this.decreaseCounter();
             return this.shots -= 1;
+        }
     }
 
     block() {
@@ -52,6 +54,22 @@ class Player {
                 let icon = document.createElement('img');
                 icon.src = "pictures/present-icon.png";
                 playerCounter.appendChild(icon).width = "30";
+                break;
+        }
+    }
+
+    decreaseCounter() {
+        let name = this.name;
+        switch (name) {
+            case "Computer":
+                console.log("default character");
+                let computerCounter = document.getElementById('computer-counter');
+                computerCounter.removeChild(computerCounter.childNodes[computer.shots]);
+                break;
+            default:
+                console.log(this.name);
+                let playerCounter = document.getElementById('player-counter');
+                playerCounter.removeChild(playerCounter.childNodes[player.shots]);
                 break;
         }
     }
