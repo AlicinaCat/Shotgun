@@ -22,7 +22,7 @@ class Player {
 
     }
 
-    shotgun() {
+    gameOver() {
         console.log(this.name + " won!");
         gameOver = true;
     }
@@ -88,9 +88,9 @@ var gameOver = false;
 
 function check() {
     if (player.shots == 3) {
-        player.shotgun();
+        player.gameOver();
     } else if (computer.shots == 3) {
-        computer.shotgun();
+        computer.gameOver();
     } else {
         return false;
     }
@@ -108,7 +108,7 @@ function turn(choice) {
             boyWrap();
             computerChoice = computer.random();
             if (computerChoice == 2) {
-                computer.shotgun();
+                computer.gameOver();
                 gameOver = true;
             }
             else
@@ -122,13 +122,15 @@ function turn(choice) {
             computerChoice = computer.random();
             console.log('computer chose: ' + computerChoice);
             if (computerChoice == 0 && player.shots > 0)
-                player.shotgun();
+                player.gameOver();
             else
                 player.shoot();
         }
 
         console.log("Player " + player.name + " has " + player.shots + " shots");
         console.log("Player " + computer.name + " has " + computer.shots + " shots");
+    } else {
+        showShotgun();
     }
 }
 
@@ -188,4 +190,19 @@ function girlWrap() {
     var image = document.getElementById('girl');
     image.setAttribute("style", "width: 300px;");
     image.src = "pictures/girl-wrap.png";
+}
+
+function showShotgun() {
+    let throwButton = document.getElementById('throw');
+    throwButton.parentNode.removeChild(throwButton);
+    let blockButton = document.getElementById('block');
+    blockButton.parentNode.removeChild(blockButton);
+    let wrapButton = document.getElementById('wrap');
+    wrapButton.parentNode.removeChild(wrapButton);
+
+    let list = document.getElementById('center');
+    let shotgunButton = document.createElement('button');
+    let buttonText = document.createTextNode('Merry Christmas!');
+    shotgunButton.appendChild(buttonText);
+    list.appendChild(shotgunButton);
 }
