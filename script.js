@@ -19,12 +19,12 @@ class Player {
     }
 
     block() {
-        
+
     }
 
     shotgun() {
         console.log(this.name + " won!");
-        return true;
+        gameOver = true;
     }
 
     random() {
@@ -32,13 +32,18 @@ class Player {
         console.log("choice: " + choice);
         if (choice == 0) {
             this.reload();
+            girlWrap();
             return choice;
         } else if (choice == 1) {
             this.block();
+            girlBlock();
             return choice;
         } else if (choice == 2) {
-            this.shoot();
-            return choice;
+            if (computer.shots > 0) {
+                this.shoot();
+                girlThrow();
+                return choice;
+            }
         }
     }
 
@@ -79,36 +84,44 @@ class Player {
     }
 }
 
+var gameOver = false;
+
 function check() {
     if (player.shots == 3) {
-        return player.shotgun();
+        player.shotgun();
     } else if (computer.shots == 3) {
-        return computer.shotgun();
+        computer.shotgun();
     } else {
         return false;
     }
 }
 
 function turn(choice) {
-    var gameOver = check();
+    check();
+
     console.log(gameOver);
     let computerChoice;
 
     if (!gameOver) {
         console.log("choice: " + choice);
         if (choice == 0) {
+            boyWrap();
             computerChoice = computer.random();
-            if (computerChoice == 2 && computer.shots + 1 > 1)
+            if (computerChoice == 2) {
                 computer.shotgun();
+                gameOver = true;
+            }
             else
                 player.reload();
         } else if (choice == 1) {
+            boyBlock();
             player.block();
             computer.random();
         } else if (choice == 2) {
+            boyThrow();
             computerChoice = computer.random();
             console.log('computer chose: ' + computerChoice);
-            if (computerChoice == 0)
+            if (computerChoice == 0 && player.shots > 0)
                 player.shotgun();
             else
                 player.shoot();
@@ -140,3 +153,39 @@ var blockButton = document.getElementById('block');
 blockButton.addEventListener('click', function () {
     turn(1);
 });
+
+function boyThrow() {
+    var image = document.getElementById('boy');
+    image.setAttribute("style", "width: 485px;");
+    image.src = "pictures/boy-throw.png";
+}
+
+function boyBlock() {
+    var image = document.getElementById('boy');
+    image.setAttribute("style", "width: 300px;");
+    image.src = "pictures/boy-block.png";
+}
+
+function boyWrap() {
+    var image = document.getElementById('boy');
+    image.setAttribute("style", "width: 300px;");
+    image.src = "pictures/boy-wrap.png";
+}
+
+function girlThrow() {
+    var image = document.getElementById('girl');
+    image.setAttribute("style", "width: 485px;");
+    image.src = "pictures/girl-throw.png";
+}
+
+function girlBlock() {
+    var image = document.getElementById('girl');
+    image.setAttribute("style", "width: 300px;");
+    image.src = "pictures/girl-block.png";
+}
+
+function girlWrap() {
+    var image = document.getElementById('girl');
+    image.setAttribute("style", "width: 300px;");
+    image.src = "pictures/girl-wrap.png";
+}

@@ -46,6 +46,10 @@ header h1 {
     font-size: 100px;
 }
 
+#girl {
+    float: right;
+}
+
 .column {
     background-color: #fd3423;
     text-align: justify;
