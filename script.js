@@ -57,10 +57,12 @@ function turn(choice) {
         console.log("choice: " + choice);
         if (choice == 0) {
             player.reload();
+            increasePlayerCounter();
         } else if (choice == 1) {
             player.block();
         } else if (choice == 2) {
             player.shoot();
+            decreasePlayerCounter();
         }
 
         computer.random();
@@ -86,3 +88,27 @@ var throwButton = document.getElementById('throw');
 throwButton.addEventListener('click', function () {
     turn(2);
 });
+
+function increasePlayerCounter() {
+    let paragraph = document.getElementById('player-counter');
+    let present = document.createElement('img');
+    present.src = "pictures/present-icon.png";
+    paragraph.appendChild(present).width = "30";
+}
+
+function decreasePlayerCounter() {
+    let paragraph = document.getElementById('player-counter');
+    paragraph.removeChild(paragraph.childNodes[player.shots + 1]);
+}
+
+function increaseComputerCounter() {
+    let paragraph = document.getElementById('computer-counter');
+    let present = document.createElement('img');
+    present.src = "pictures/present-icon.png";
+    paragraph.appendChild(present).width = "30";
+}
+
+function decreaseComputerCounter() {
+    let paragraph = document.getElementById('computer-counter');
+    paragraph.removeChild(paragraph.childNodes[computer.shots + 1]);
+}
