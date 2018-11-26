@@ -27,8 +27,8 @@ class Player {
         gameOver = true;
         if (this.name != "Computer")
             showShotgun();
-        else 
-            playerLost();
+        else
+            window.location.href = "loser.html";
     }
 
     random() {
@@ -133,7 +133,7 @@ function turn(choice) {
 
         console.log("Player " + player.name + " has " + player.shots + " shots");
         console.log("Player " + computer.name + " has " + computer.shots + " shots");
-    } 
+    }
 }
 
 var player = new Player('Alicina', 0);
@@ -209,28 +209,6 @@ function showShotgun() {
     list.appendChild(shotgunButton);
 
     shotgunButton.addEventListener('click', function () {
-    changeScreenWinner();
-});
+        window.location.href = "winner.html";
+    });
 }
-
-function playerLost() {
-    let throwButton = document.getElementById('throw');
-    throwButton.parentNode.removeChild(throwButton);
-    let blockButton = document.getElementById('block');
-    blockButton.parentNode.removeChild(blockButton);
-    let wrapButton = document.getElementById('wrap');
-    wrapButton.parentNode.removeChild(wrapButton);
-
-    let list = document.getElementById('center');
-    let title = document.createElement('h1');
-    title.innerHTML = "You lost!";
-    list.appendChild(title);
-}
-
-function changeScreenWinner() {
-    let list = document.getElementById('center');
-    let title = document.createElement('h1');
-    title.innerHTML = "You won!";
-    list.appendChild(title);
-}
-
