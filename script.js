@@ -47,7 +47,8 @@ class Player {
                 this.shoot();
                 girlThrow();
                 return choice;
-            }
+            } else
+                this.random();
         }
     }
 
@@ -122,13 +123,16 @@ function turn(choice) {
             player.block();
             computer.random();
         } else if (choice == 2) {
-            boyThrow();
-            computerChoice = computer.random();
-            console.log('computer chose: ' + computerChoice);
-            if (computerChoice == 0 && player.shots > 0)
-                player.gameOver();
-            else
-                player.shoot();
+            if (player.shots > 0) {
+                boyThrow();
+                computerChoice = computer.random();
+                console.log('computer chose: ' + computerChoice);
+                if (computerChoice == 0 && player.shots > 0)
+                    player.gameOver();
+                else
+                    player.shoot();
+            } else {alert("You have no presents to throw!")}
+
         }
 
         console.log("Player " + player.name + " has " + player.shots + " shots");
