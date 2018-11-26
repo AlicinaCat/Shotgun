@@ -109,6 +109,16 @@ button:hover {
     background-color: #053a33;
 }
 
+#center h1 {
+    font-size: 100px;
+    color: #053a33;
+    text-shadow:
+    -5px -5px 0 #f5d4b8,
+    5px -5px 0 #f5d4b8,
+    -5px 5px 0 #f5d4b8,
+    5px 5px 0 #f5d4b8;
+}
+
 ul {
     list-style-type: none;
 }
