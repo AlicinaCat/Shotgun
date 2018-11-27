@@ -1,7 +1,9 @@
+// Player class
+
 class Player {
-    constructor(name, shots) {
+    constructor(name) {
         this.name = name;
-        this.shots = shots;
+        this.shots = 0;
     }
 
     reload() {
@@ -25,10 +27,52 @@ class Player {
     gameOver() {
         console.log(this.name + " won!");
         gameOver = true;
-        if (this.name != "Computer")
-            showShotgun();
-        else
-            window.location.href = "loser.html";
+        showShotgun();
+    }
+
+    increaseCounter() {
+        console.log(this.name);
+        let playerCounter = document.getElementById('player-counter');
+        let icon = document.createElement('img');
+        icon.src = "pictures/present-icon.png";
+        playerCounter.appendChild(icon).width = "30";
+
+
+    }
+
+    decreaseCounter() {
+        console.log(this.name);
+        let playerCounter = document.getElementById('player-counter');
+        playerCounter.removeChild(playerCounter.childNodes[player.shots]);
+    }
+}
+
+// Computer class
+
+class Computer extends Player {
+    constructor() {
+        super();
+        this.name = 'Computer';
+    }
+
+    gameOver() {
+        console.log(this.name + " won!");
+        gameOver = true;
+        window.location.href = "loser.html";
+    }
+
+    decreaseCounter() {
+        console.log("default character");
+        let computerCounter = document.getElementById('computer-counter');
+        computerCounter.removeChild(computerCounter.childNodes[computer.shots]);
+    }
+
+    increaseCounter() {
+        console.log("default character");
+        let computerCounter = document.getElementById('computer-counter');
+        let present = document.createElement('img');
+        present.src = "pictures/present-icon.png";
+        computerCounter.appendChild(present).width = "30";
     }
 
     random() {
@@ -51,43 +95,9 @@ class Player {
                 this.random();
         }
     }
-
-    increaseCounter() {
-        let name = this.name;
-        switch (name) {
-            case "Computer":
-                console.log("default character");
-                let computerCounter = document.getElementById('computer-counter');
-                let present = document.createElement('img');
-                present.src = "pictures/present-icon.png";
-                computerCounter.appendChild(present).width = "30";
-                break;
-            default:
-                console.log(this.name);
-                let playerCounter = document.getElementById('player-counter');
-                let icon = document.createElement('img');
-                icon.src = "pictures/present-icon.png";
-                playerCounter.appendChild(icon).width = "30";
-                break;
-        }
-    }
-
-    decreaseCounter() {
-        let name = this.name;
-        switch (name) {
-            case "Computer":
-                console.log("default character");
-                let computerCounter = document.getElementById('computer-counter');
-                computerCounter.removeChild(computerCounter.childNodes[computer.shots]);
-                break;
-            default:
-                console.log(this.name);
-                let playerCounter = document.getElementById('player-counter');
-                playerCounter.removeChild(playerCounter.childNodes[player.shots]);
-                break;
-        }
-    }
 }
+
+// Game dynamic
 
 var gameOver = false;
 
@@ -102,7 +112,7 @@ function check() {
 }
 
 function turn(choice) {
-    check();
+
 
     console.log(gameOver);
     let computerChoice;
@@ -131,88 +141,20 @@ function turn(choice) {
                     player.gameOver();
                 else
                     player.shoot();
-            } else {alert("You have no presents to throw!")}
+            } else { alert("You have no presents to throw!") }
 
         }
 
         console.log("Player " + player.name + " has " + player.shots + " shots");
         console.log("Player " + computer.name + " has " + computer.shots + " shots");
     }
+
+    check();
 }
 
-var player = new Player('Alicina', 0);
+var player = new Player('Alicina');
 console.log("Player 1 name is " + player.name + ", available shots: " + player.shots);
 
-var computer = new Player('Computer', 0);
+var computer = new Computer();
 console.log("Player 2 name is " + computer.name + ", available shots: " + computer.shots);
 
-
-var wrapButton = document.getElementById('wrap');
-wrapButton.addEventListener('click', function () {
-    turn(0);
-});
-
-var throwButton = document.getElementById('throw');
-throwButton.addEventListener('click', function () {
-    turn(2);
-});
-
-var blockButton = document.getElementById('block');
-blockButton.addEventListener('click', function () {
-    turn(1);
-});
-
-function boyThrow() {
-    var image = document.getElementById('boy');
-    image.setAttribute("style", "width: 485px;");
-    image.src = "pictures/boy-throw.png";
-}
-
-function boyBlock() {
-    var image = document.getElementById('boy');
-    image.setAttribute("style", "width: 300px;");
-    image.src = "pictures/boy-block.png";
-}
-
-function boyWrap() {
-    var image = document.getElementById('boy');
-    image.setAttribute("style", "width: 300px;");
-    image.src = "pictures/boy-wrap.png";
-}
-
-function girlThrow() {
-    var image = document.getElementById('girl');
-    image.setAttribute("style", "width: 485px;");
-    image.src = "pictures/girl-throw.png";
-}
-
-function girlBlock() {
-    var image = document.getElementById('girl');
-    image.setAttribute("style", "width: 300px;");
-    image.src = "pictures/girl-block.png";
-}
-
-function girlWrap() {
-    var image = document.getElementById('girl');
-    image.setAttribute("style", "width: 300px;");
-    image.src = "pictures/girl-wrap.png";
-}
-
-function showShotgun() {
-    let throwButton = document.getElementById('throw');
-    throwButton.parentNode.removeChild(throwButton);
-    let blockButton = document.getElementById('block');
-    blockButton.parentNode.removeChild(blockButton);
-    let wrapButton = document.getElementById('wrap');
-    wrapButton.parentNode.removeChild(wrapButton);
-
-    let list = document.getElementById('center');
-    let shotgunButton = document.createElement('button');
-    let buttonText = document.createTextNode('Merry Christmas!');
-    shotgunButton.appendChild(buttonText);
-    list.appendChild(shotgunButton);
-
-    shotgunButton.addEventListener('click', function () {
-        window.location.href = "winner.html";
-    });
-}
