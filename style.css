@@ -11,6 +11,7 @@ p {
     font-family: Arial, Helvetica, sans-serif;
     color: #ffffff;
     margin-top: 5px;
+    line-height: 48px;
 }
 
 .container {
@@ -24,20 +25,17 @@ p {
     bottom: 0;
     width: 99%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;;
 }
 
 #pictures-container {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 99%;
     display: flex;
     justify-content: space-between;
 }
 
-#pic-right {
-    text-align: right;
-}
 
 header h1 {
     text-align: center;
@@ -50,6 +48,7 @@ header h1 {
 #girl {
     float: right;
 }
+
 
 .column {
     background-color: #fd3423;
