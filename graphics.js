@@ -16,37 +16,31 @@ blockButton.addEventListener('click', function () {
 
 function boyThrow() {
     var image = document.getElementById('boy');
-    image.setAttribute("style", "width: 485px;");
     image.src = "pictures/boy-throw.png";
 }
 
 function boyBlock() {
     var image = document.getElementById('boy');
-    image.setAttribute("style", "width: 300px;");
     image.src = "pictures/boy-block.png";
 }
 
 function boyWrap() {
     var image = document.getElementById('boy');
-    image.setAttribute("style", "width: 300px;");
     image.src = "pictures/boy-wrap.png";
 }
 
 function girlThrow() {
     var image = document.getElementById('girl');
-    image.setAttribute("style", "width: 485px;");
     image.src = "pictures/girl-throw.png";
 }
 
 function girlBlock() {
     var image = document.getElementById('girl');
-    image.setAttribute("style", "width: 300px;");
     image.src = "pictures/girl-block.png";
 }
 
 function girlWrap() {
     var image = document.getElementById('girl');
-    image.setAttribute("style", "width: 300px;");
     image.src = "pictures/girl-wrap.png";
 }
 
