@@ -44,6 +44,7 @@ header h1 {
     font-family: 'Abril Fatface', cursive;
     color: #ebf0f4;
     font-size: 100px;
+    text-shadow: #333333 1px 0 10px;
 }
 
 #girl {
@@ -129,5 +130,10 @@ li {
 
 h2 {
     font-size: 50px;
-    color: #f5d4b8;
+    color: #fd3423;
+    text-shadow:
+    -1px -1px 0 #f5d4b8,
+    1px -1px 0 #f5d4b8,
+    -1px 1px 0 #f5d4b8,
+    1px 1px 0 #f5d4b8;
 }
